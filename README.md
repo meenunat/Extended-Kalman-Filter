@@ -2,9 +2,19 @@
 
 ## Objective
 
-In this project, kalman filter is used to estimate the state of a moving object of interest with noisy lidar and radar measurements. RMSE values are also calculated. 
+In this project, kalman filter is used to estimate the state of a moving object of interest with noisy lidar and radar measurements. It involves
+ 
+	* initializing Kalman filter variables
+	* predicting where our object is going to be after a time step Δt
+	* updating where our object is based on sensor measurements
+
+Then the prediction and update steps repeat themselves in a loop.To measure the performance of Kalman filter root mean squared error is also calculated comparing the Kalman filter results with the provided ground truth. 
 
 Lidar measurements are red circles, radar measurements are blue circles with an arrow pointing in the direction of the observed angle, and estimation markers are green triangles.
+
+These three steps (initialize, predict, update) plus calculating RMSE encapsulate the entire extended Kalman filter project.
+
+## Building Steps
 
 The main program can be built and run by doing the following from the project top directory.
 
@@ -14,14 +24,34 @@ The main program can be built and run by doing the following from the project to
 	4. make
 	5. ./ExtendedKF
 
+
+## Files in the GitHub
+	1.	main.cpp - communicates with the Term 2 Simulator receiving data measurements, calls a function to run the Kalman filter, calls a function to calculate RMSE
+
+	2.	FusionEKF.cpp - initializes the filter, calls the predict function, calls the update function
+	
+	3.	kalman_filter.cpp- defines the predict function, the update function for lidar, and the update function for radar
+	4.	tools.cpp- function to calculate RMSE and the Jacobian matrix
+
+## How the Files Relate to Each Other
+
+	1.	Main.cpp reads in the data and sends a sensor measurement to FusionEKF.cpp
+
+	2.	FusionEKF.cpp takes the sensor data and initializes variables and updates variables. The Kalman filter equations are not in this file. 
+	
+	3.	FusionEKF.cpp has a variable called ekf_, which is an instance of a KalmanFilter class. The ekf_ will hold the matrix and vector values. You will also use the ekf_ instance to call the predict and update equations.
+
+	4. The KalmanFilter class is defined in kalman_filter.cpp and kalman_filter.h. You will only need to modify 'kalman_filter.cpp', which contains functions for the prediction and update steps.
+
+
 ## Data
 
-INPUT: values provided by the simulator to the c++ program
+### INPUT: values provided by the simulator to the c++ program
 
 ["sensor_measurement"] => the measurement that the simulator observed (either lidar or radar)
 
 
-OUTPUT: values provided by the c++ program to the simulator
+### OUTPUT: values provided by the c++ program to the simulator
 
 ["estimate_x"] <= kalman filter estimated position x
 ["estimate_y"] <= kalman filter estimated position y
