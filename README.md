@@ -68,13 +68,13 @@ The main program can be built and run by doing the following from the project to
 
 The Kalman Filter algorithm will go through the following steps:
 
-** first measurement** - the filter will receive initial measurements of the object's position relative to the car. These measurements will come from a radar or lidar sensor.
+	** first measurement** - the filter will receive initial measurements of the object's position relative to the car. These measurements will come from a radar or lidar sensor.
 
-** initialize state and covariance matrices** - the filter will initialize the object's position based on the first measurement.Then the car will receive another sensor measurement after a time period Δt.
+	** initialize state and covariance matrices** - the filter will initialize the object's position based on the first measurement.Then the car will receive another sensor measurement after a time period Δt.
 	
-** predict** - the algorithm will predict where the object will be after time Δt. One basic way to predict the object location after Δt is to assume the object's velocity is constant; thus the object will have moved velocity * Δt. 
+	** predict** - the algorithm will predict where the object will be after time Δt. One basic way to predict the object location after Δt is to assume the object's velocity is constant; thus the object will have moved velocity * Δt. 
 	
-** update** - the filter compares the "predicted" location with what the sensor measurement says. The predicted location and the measured location are combined to give an updated location. The Kalman filter will put more weight on either the predicted location or the measured location depending on the uncertainty of each value then the car will receive another sensor measurement after a time period Δt. The algorithm then does another predict and update step.
+	** update** - the filter compares the "predicted" location with what the sensor measurement says. The predicted location and the measured location are combined to give an updated location. The Kalman filter will put more weight on either the predicted location or the measured location depending on the uncertainty of each value then the car will receive another sensor measurement after a time period Δt. The algorithm then does another predict and update step.
 
 
 ## Definition of Lidar variables: <a name="lidar"></a>
