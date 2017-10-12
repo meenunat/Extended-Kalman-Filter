@@ -60,6 +60,10 @@ The main program can be built and run by doing the following from the project to
 ["rmse_vx"]
 ["rmse_vy"]
 
+![](output/EKF_dataset1.jpg)
+
+![](output/EKF_dataset2.jpg) 
+
 ## Kalman Filter Algorithm Steps
 
 The Kalman Filter algorithm will go through the following steps:
